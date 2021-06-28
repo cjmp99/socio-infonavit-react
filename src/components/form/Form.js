@@ -17,7 +17,7 @@ const Form = () => {
                 name='email'
                 value={data.email}
                 onChange={onChange}
-                placeholder='socioinfonavit@gmail.com'
+                placeholder='email'
                 ref={focusRef}
                 autoCorrect="off"
                 autoComplete="off"
@@ -29,7 +29,7 @@ const Form = () => {
                 name='password'
                 value={data.password}
                 onChange={onChange}
-                placeholder='Contraseña'
+                placeholder='password'
                 ref={focusTwoRef}
                 autoCorrect="off"
                 autoComplete="off"
@@ -39,7 +39,7 @@ const Form = () => {
 
             <Button
                 type='submit'
-                value='Entrar'
+                value='Sign In'
                 disabled={data.email === '' && data.password === '' ? true : false}
                 background={data.email === '' && data.password === '' ? '#9F9F9F' : '#EC5056'}
             />

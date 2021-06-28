@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_ERROR } from "types/session/index";
+import { LOGIN, LOGIN_ERROR, LOGOUT_SESSION } from "types/session/index";
 
 
 export default function sessionReducer(state, action) {
@@ -7,12 +7,19 @@ export default function sessionReducer(state, action) {
             return {
                 ...state,
                 user: action.user,
-                errorLogin: null
+                errorLogin: null,
+                logout: false
             }
         case LOGIN_ERROR:
             return {
                 ...state,
                 errorLogin: action.errorLogin
+            }
+        case LOGOUT_SESSION:
+            return{
+                ...state,
+                user: null,
+                logout: true
             }
         default:
             return state;

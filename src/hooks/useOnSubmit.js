@@ -1,5 +1,5 @@
 import Alert from 'components/Alert/Alert';
-import { login } from 'context/sessionActions';
+import { login } from 'context/session/sessionActions';
 import { useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useSession } from './useSession';
@@ -14,7 +14,16 @@ export const useOnSubmit = (data, setErrorE, setErrorP) => {
 
     useEffect(() => {
         if (!state.errorLogin) return;
-        Alert('error', 'Error', 'The username or password is invalid')
+        Alert(
+            'error',
+            'Error',
+            state.errorLogin,
+            false,
+            '#EC5056',
+            '',
+            'Ok', 
+            false,
+        )
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state.errorLogin])
 
@@ -45,10 +54,10 @@ export const useOnSubmit = (data, setErrorE, setErrorP) => {
                 focusTwoRef.current.focus()
             }
             if (count > 0) {
-                setErrorP('Debe colocar una contraseña')
+                setErrorP('You must enter a password!')
             }
         } else if (data.email === '' && data.password !== '') {
-            setErrorE('Debe colocar un correo electrónico!')
+            setErrorE('You must put an email!')
         } else {
             login(data, dispatch)
             setCount(0)
